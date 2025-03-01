@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/java:1-17-bullseye
+    volumes:
+      - /Users/chengyitang/Dev/springboot:/springboot
+      - ~/.m2:/root/.m2:cached
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Xmx512m
+    # 保持容器運行
+    command: sleep infinity
+    # 容器名稱
+    container_name: springboot-dev
+
+    # 確保容器重啟
+    restart: unless-stopped
+    # 配置更好的終端體驗
+    tty: true
